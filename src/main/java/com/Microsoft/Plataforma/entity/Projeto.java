@@ -18,6 +18,8 @@ public class Projeto {
 
     private String descricao;
 
+    private String status;
+
     @ManyToOne(fetch = FetchType.EAGER , optional = false)
     @JoinColumn(name = "cliente_id",nullable = false)
     private Cliente cliente;

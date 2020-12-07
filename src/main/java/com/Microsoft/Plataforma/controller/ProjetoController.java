@@ -42,6 +42,7 @@ public class ProjetoController {
             Projeto projeto = oldProjeto.get();
             projeto.setTitulo(newProjeto.getTitulo());
             projeto.setDescricao(newProjeto.getDescricao());
+            projeto.setStatus(newProjeto.getStatus());
             projeto.setCliente(newProjeto.getCliente());
             service.add(projeto);
         }
