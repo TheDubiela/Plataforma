@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clientes</title>
+
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Plataforma de Projetos</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/cliente/index">Clientes</a></li>
+                <li><a href="/projeto/index">Projetos</a></li>
+                <li><a href="/atividade/index">Atividades</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="main" class="container-fluid" style="margin-top: 50px">
+    <div id="top" class="row">
+        <div class="col-sm-3">
+            <h2>Clientes</h2>
+        </div>
+        <div class="col-sm-6">
+
+            <div class="input-group h2">
+                <label for="search"></label><input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
+                <span class="input-group-btn">
+					<button class="btn btn-primary" type="submit">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+				</span>
+            </div>
+
+        </div>
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-primary pull-right h2" data-toggle="modal" data-target="#cadastrarCliente">Novo Cliente</button>
+        </div>
+    </div>
+
+    <hr />
+
+    <div id="list" class="row">
+        <div class="table-responsive col-md-12">
+            <table class="table table-striped" cellspacing="0" cellpadding="0">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th class="actions">Ações</th>
+                </tr>
+                </thead>
+                <tbody id="clientesTableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="cadastrarCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Dados do Cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="clienteNome" class="col-form-label">Nome:</label>
+                        <input type="text" class="form-control" id="clienteNome">
+                    </div>
+                    <div class="form-group">
+                        <label for="clienteCpf" class="col-form-label">CPF:</label>
+                        <input type="text" class="form-control" id="clienteCpf">
+                    </div>
+                    <div class="form-group">
+                        <label for="clienteEmail" class="col-form-label">Email:</label>
+                        <input type="text" class="form-control" id="clienteEmail">
+                    </div>
+                    <input type="hidden" id="clienteId">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" onclick="ClienteController.save()">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/js/bootstrap.min.js}"></script>
+<script th:src="@{/assets/js/cliente/ClienteController.js}"></script>
+
+<script type="text/javascript">
+    $(function() {
+        ClienteController.list();
+    });
+</script>
+
+</body>
+</html>

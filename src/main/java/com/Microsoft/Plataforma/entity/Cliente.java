@@ -14,7 +14,7 @@ public class Cliente {
 
     @GeneratedValue
     @Id
-    private long id;
+    private long idCliente;
 
     private String nome;
 

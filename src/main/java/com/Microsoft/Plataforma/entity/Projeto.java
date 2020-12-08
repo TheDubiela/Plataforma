@@ -12,7 +12,7 @@ public class Projeto {
 
     @GeneratedValue
     @Id
-    private long id;
+    private long idProjeto;
 
     private String titulo;
 
@@ -21,7 +21,7 @@ public class Projeto {
     private String status;
 
     @ManyToOne(fetch = FetchType.EAGER , optional = false)
-    @JoinColumn(name = "cliente_id",nullable = false)
+    @JoinColumn(name = "idCliente",nullable = false)
     private Cliente cliente;
 
 }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class RoutersController {
 
-    @GetMapping("/clinete/index")
+    @GetMapping("/cliente/index")
     public String clienteIndex(){
         return "/cliente/index";
     }

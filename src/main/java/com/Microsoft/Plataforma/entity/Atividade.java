@@ -12,17 +12,17 @@ public class Atividade {
 
     @GeneratedValue
     @Id
-    private long id;
+    private long idAtividade;
 
     private String titulo;
 
     private String descricao;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "cliente_id", nullable = false)
+    @JoinColumn(name = "idCliente", nullable = false)
     private Cliente cliente;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "projeto_id", nullable = false)
+    @JoinColumn(name = "idProjeto", nullable = false)
     private Projeto projeto;
 }
