@@ -38,16 +38,6 @@
             <h2>Projetos</h2>
         </div>
         <div class="col-sm-6">
-
-            <div class="input-group h2">
-                <label for="search"></label><input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
-                <span class="input-group-btn">
-					<button class="btn btn-primary" type="submit">
-						<span class="glyphicon glyphicon-search"></span>
-					</button>
-				</span>
-            </div>
-
         </div>
         <div class="col-sm-3">
             <button type="button" class="btn btn-primary pull-right h2" data-toggle="modal" data-target="#cadastrarProjeto">Novo Projeto</button>
@@ -65,7 +55,8 @@
                     <th>Titulo</th>
                     <th>Descrição</th>
                     <th>Status</th>
-                    <th>Cliente</th>
+                    <th>ID do Cliente</th>
+                    <th>Atividades</th>
                     <th class="actions">Ações</th>
                 </tr>
                 </thead>
@@ -103,7 +94,6 @@
                     <div class="form-group">
                         <label for="clienteSelectList" class="col-form-label">Nome do Cliente:</label>
                         <select id="clienteSelectList">
-
                         </select>
                     </div>
 
@@ -118,10 +108,43 @@
     </div>
 </div>
 
+<div class="modal fade" id="listaDeAtividades" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="atividadesModalLabel">Atividades</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <table class="table table-striped" cellspacing="0" cellpadding="0">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Titulo</th>
+                            <th>Descrição</th>
+                            <th>ID do Cliente</th>
+                        </tr>
+                        </thead>
+                        <tbody id="atividadesListTableBody">
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script th:src="@{/assets/js/jquery.min.js}"></script>
 <script th:src="@{/assets/js/bootstrap.min.js}"></script>
 <script th:src="@{/assets/js/cliente/ClienteController.js}"></script>
 <script th:src="@{/assets/js/projeto/ProjetoController.js}"></script>
+<script th:src="@{/assets/js/atividade/AtividadeController.js}"></script>
 
 <script type="text/javascript">
     $(function() {

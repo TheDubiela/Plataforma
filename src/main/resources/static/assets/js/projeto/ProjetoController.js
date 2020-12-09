@@ -11,6 +11,7 @@ var ProjetoController = new function() {
                     $('<td>').text(item.descricao),
                     $('<td>').text(item.status),
                     $('<td>').text(item.cliente.idCliente),
+                    $('<td class="actions"><a class="btn btn-warning btn-xs" onclick="AtividadeController.atividadeList('+item.idProjeto+')">Atividades</a>'),
                     $('<td class="actions"><a class="btn btn-warning btn-xs" onclick="ProjetoController.edit('+item.idProjeto+')">Editar</a><a class="btn btn-danger btn-xs" onclick="ProjetoController.delete('+item.idProjeto+')">Excluir</a></td>')
                 ).appendTo('#projetosTableBody');
             });
@@ -21,7 +22,21 @@ var ProjetoController = new function() {
         $('#projetoSelectList').empty();
         $.get( "/projetos", function( data ) {
             $.each(data, function(i, item) {
-                $('<option value='+item.titulo+'>'+item.titulo+'</option>').appendTo('#projetoSelectList');
+                $('<option value='+item.idProjeto+'>'+item.titulo+'</option>').appendTo('#projetoSelectList');
+            });
+        });
+    }
+
+    this.clienteListByProjetoId = function() {
+        $("#projetoSelectList").change(function() {
+            $('#clienteSelectList').empty();
+            var id = $(this).val();
+            $.get( "/projetos", function( data ) {
+                $.each(data, function(i, item) {
+                    if (item.idProjeto == id) {
+                        $('<option value='+ item.cliente.idCliente +'>'+ item.cliente.idCliente+'</option>').appendTo('#clienteSelectList');
+                    }
+                });
             });
         });
     }
@@ -67,7 +82,7 @@ var ProjetoController = new function() {
             });
         }
         else {
-            PointerEvent.update(idProjetoToEdit);
+            ProjetoController.update(idProjetoToEdit);
         }
 
     }
@@ -106,9 +121,9 @@ var ProjetoController = new function() {
     }
 
     this.setDadosProjetoModal = function(projeto) {
-        $('#projetoTitulo').val(projeto.nome),
-            $('#projetoDescricao').val(projeto.email),
-            $('#projetoStatus').val(projeto.cpf),
+        $('#projetoTitulo').val(projeto.titulo),
+            $('#projetoDescricao').val(projeto.descricao),
+            $('#projetoStatus').val(projeto.status),
             $('#clienteSelectList').val(projeto.cliente.idCliente)
     }
 
